@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 2 Demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <style>
+      h3 {
+        width: 3em;
+        height: 3em;
+        text-align: center;
+        background-color: #ffdab9;
+        border: 1px solid;
+        padding: 1em;
+        margin-right: 0.5em;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = () => {
+        const container = document.getElementById("item-container");
+        const btAdd = document.getElementById("add");
+        btAdd.addEventListener("click", () => addNewNumber());
+
+        const addNewNumber = () => {
+          const item = document.createElement("h3");
+          const node = document.createTextNode(getRandNum());
+          item.appendChild(node);
+          container.appendChild(item);
+        };
+
+        // generate random numbers between 1 and max inclusive (default: 100)
+        const getRandNum = (max = 100) => Math.floor(Math.random() * max + 1);
+      };
+    </script>
+  </head>
+  <body class="p-5">
+    <h1>Random numbers</h1>
+    <button id="add" class="btn btn-primary my-4">Add a number</button>
+    <button id="Sort" class="btn btn-primary my-4">sort numbers</button>
+    <div id="item-container" class="d-flex flex-wrap text-center"></div>
+  </body>
+</html>
