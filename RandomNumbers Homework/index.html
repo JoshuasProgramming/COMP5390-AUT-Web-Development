@@ -24,17 +24,23 @@
     </style>
     <script type="text/javascript">
       window.onload = () => {
+
+        //grabbing all the buttons and div containers from the html document to use in JavaScript
         const container = document.getElementById("item-container");
         const btAdd = document.getElementById("add");
         const btSort = document.getElementById("sort");
-        let numCount = 0;
-        btAdd.addEventListener("click", () => addNewNumber());
 
+        //Creating the numCount variable, which will increase when we add more numbers
+        let numCount = 0;
+
+        btAdd.addEventListener("click", () => addNewNumber());
         const addNewNumber = () => {
           const item = document.createElement("h3");
           const node = document.createTextNode(getRandNum());
+
           numCount++
           alert(numCount);
+
           item.appendChild(node);
           container.appendChild(item);
         };
