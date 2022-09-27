@@ -27,11 +27,14 @@
         const container = document.getElementById("item-container");
         const btAdd = document.getElementById("add");
         const btSort = document.getElementById("sort");
+        let numCount = 0;
         btAdd.addEventListener("click", () => addNewNumber());
 
         const addNewNumber = () => {
           const item = document.createElement("h3");
           const node = document.createTextNode(getRandNum());
+          numCount++
+          alert(numCount);
           item.appendChild(node);
           container.appendChild(item);
         };
