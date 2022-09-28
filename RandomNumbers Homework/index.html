@@ -36,24 +36,33 @@
         //Creating the numCount variable, which will increase when we add more numbers
         let numCount = 0;
 
+        let numArr = [];
+
         btAdd.addEventListener("click", () => addNewNumber());
         const addNewNumber = () => {
           const item = document.createElement("h3");
           const node = document.createTextNode(getRandNum());
 
+          //increment the number of numbers on the page
           numCount++
           
+          //set a if statement that will always equal true when there are 2 or more numbers
           if(numCount >= 2){
             btSort.style.display = 'inline';
           }
 
           item.appendChild(node);
-          container.appendChild(item);
+          container.appendChild(item); 
+
+          numArr.push(parseInt(item.innerText));
+
+
         };
 
 
         // generate random numbers between 1 and max inclusive (default: 100)
         const getRandNum = (max = 100) => Math.floor(Math.random() * max + 1);
+        
       };
     </script>
   </head>
