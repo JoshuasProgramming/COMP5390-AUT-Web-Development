@@ -51,11 +51,12 @@
             btSort.style.display = 'inline';
           }
 
+          //append the number to the h3 tag & add this to the main container
           item.appendChild(node);
           container.appendChild(item); 
 
+          //push each number into the 'numArr' array
           numArr.push(parseInt(item.innerText));
-
 
         };
 
