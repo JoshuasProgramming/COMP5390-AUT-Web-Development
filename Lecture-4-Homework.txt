@@ -1,0 +1,20 @@
+// Lecture 4 Homework
+
+// Q1) Briefly explain what ther term 'MVC' stands for. 
+Also briefly explain what each component of the MVC framework 
+(i.e. the "M", the "V", and the "C" ) is responsible for.
+
+// A1) 'MVC' stands for Model, View, Controller. 
+        i) The 'Model' component is responsible for data access & 
+        business logic. Someting else the controller can do is query/update database.
+        ii) The 'View' component is responsible for viewing the data which was processed by the 'Model'
+        iii) The 'Controller' component is responsible for application logic, such as the receiving of HTTP
+        requests, getting data from the right 'models', passing data to the right 'views', and returning 'HTTP' responses.
+
+// Q2) List the advantages of MVC frameworks
+
+//A2) i) Prevents you from having to re-invent the common CRUD behaviours for every website.
+      ii) Prevents SQL and database handling from being mixed with business logic.
+      iii) Make common tasks easier
+      iv) Provide a working basis for your system
+      v) Force a single coherent project structure
