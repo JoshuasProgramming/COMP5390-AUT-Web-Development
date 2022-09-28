@@ -71,18 +71,17 @@
         //we'll sort the numArr into numerical order
          numArr.sort(function(a, b){return a-b});
 
+          //grabbing the container and h3 tag item from the HTML document
           const container = document.getElementById('item-container');
           const item = document.getElementsByTagName("h3");
 
-          console.log(numArr)
 
+          //loop for length of numArr times
           for(let i = 0; i < numArr.length; i++){
-            console.log(item[i].innerHTML);
             
-
+            //on each iteration we'll replace the original unsorted item to th new sorted item.
             item[i].innerHTML = numArr[i];
           }
-
         }
 
         // generate random numbers between 1 and max inclusive (default: 100)
