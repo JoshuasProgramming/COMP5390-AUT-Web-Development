@@ -64,7 +64,21 @@
 
         btSort.addEventListener("click", () => sortNumbers());
         const sortNumbers = () => {
-          
+
+         numArr.sort(function(a, b){return a-b});
+
+          const container = document.getElementById('item-container');
+          const item = document.getElementsByTagName("h3");
+
+          console.log(numArr)
+
+          for(let i = 0; i < numArr.length; i++){
+            console.log(item[i].innerHTML);
+            
+
+            item[i].innerHTML = numArr[i];
+          }
+
         }
 
         // generate random numbers between 1 and max inclusive (default: 100)
