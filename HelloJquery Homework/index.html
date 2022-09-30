@@ -40,12 +40,20 @@
              //event happens when user click on the h2
              $('h2').on('click', function(){
 
-
+               //checks if there is a yellow background color; if there isn't...
                 if(yellow == false){
+
+                    //set yellow to true
                     yellow = true; 
+
+                    //convert it to yellow
                     $(this).css('background-color', 'yellow');
+
                 } else {
+                    //set yellow to false
                     yellow = false;
+
+                    //convert it to white
                     $(this).css('background-color', 'white');
                 }
 
