@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Hello jQuery</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javaScript">
+         $(function () {
+             $('p').on('mouseover', function() {
+                 $(this).css('background-color','#FFEBCD')
+             })
+             $('p').on('mouseout', function() {
+                 $(this).css('background-color','white')
+             })
+             $('button#bigger').on('click', () => {
+                 const size = $('p').css('font-size').replace('px','')
+                 $('p').css('font-size', 1.2*size)
+             })
+             $('button#smaller').on('click', () => {
+                 let size = $('p').css('font-size').replace('px','')
+                 $('p').css('font-size', 0.9*size)
+             })
+         })
+      </script>
+   </head>
+   <body>
+      <h2>Hello, jQuery!</h2>
+      <p>
+         It is a good practice to wait for the DOM to be fully loaded and ready
+         before working with it using jQuery.
+      </p>
+      <button id="bigger">Make bigger</button>
+      <button id="smaller">Make smaller</button>
+   </body>
+</html>
