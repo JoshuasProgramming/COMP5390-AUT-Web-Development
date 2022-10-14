@@ -1,0 +1,112 @@
+<html><head><title>Musicals</title>
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script>
+    $(document).ready(function(
+    ){
+
+        let idCounter = 0;
+
+        //Task 1 Begins
+        const changeText = (e) => {
+            const element = $("#p1");
+            const newText = element.text().replace(/Paragraph 1/g, "Welcome");
+            element.text(newText);
+        };
+
+        const changeTextBackground = (e) => {
+            const element = $("#p1");
+            const newText = element.css("color", "blue");
+        }
+
+        changeText();
+        changeTextBackground();
+
+        //Task 1 Ends
+
+        //Task 2 Begins
+
+        $('#b1').on('click', function() {
+            $('#summerNights').append('<li id="newList"' + idCounter + '>' + "Did you get very far" + '</li>')
+        });
+
+        //Task 2 Ends
+
+        //Task 3 Begins
+
+        $('li').on('mouseover', function() {
+            $(this).css('background-color','yellow');
+        })
+
+        $('li').on('mouseout', function() {
+            $(this).css('background-color','white')
+            // hoverOff()
+        })
+
+        //Task 3 Ends
+
+
+        //Task 4 Begins
+
+        $('#b2').on('click', function() {
+            $('#summerNights').last().append("<li id='NewList" + idCounter > + "Like does he have a car" + "</li>");
+        });
+
+        //Task 4 Ends
+
+        //Task 5 Begins
+
+        $('form > input:nth-child(3)').on('click', function() {
+            let songTitle = ($(this).siblings().first().val());
+            let songLink =  ($(this).siblings().first().next().val());
+
+            let markup = "<tr><td>" + songTitle + "</td>" + "<td>" + songLink + "</tr></td>";
+
+            $("table").append(markup);
+        });
+
+        //Task 5 Ends
+
+        //Task 6 Begins
+
+        $('.newList').on('mouseover', function() {
+            // $(this).css('background-color','yellow');
+            alert("on");
+        })
+
+        $('.newList').on('mouseout', function() {
+            // $(this).css('background-color','white');
+            alert("off");
+        })
+
+        //Task 6 Ends
+
+     });
+    </script>
+    </head>
+    <body>
+     <p id="p1">Paragraph 1</p>
+     <ul id="summerNights">
+     <li>Summer loving had me a blast</li>
+     <li>Summer loving happened so fast</li>
+     <li>I met a girl crazy for me</li>
+     <li>Met a boy cute as can be</li>
+     </ul>
+     <button id="b1">Tell me more, tell me more</button>
+     <button id="b2">Tell me more, tell me more</button>
+     <table border=1>
+     <tr>
+     <th>song</th> <th>link</th>
+     </tr>
+     <tr>
+     <td>Summer Nights</td>
+     <td>https://www.youtube.com/watch?v=ZW0DfsCzfq4</td>
+     </tr>
+     </table>
+     <form id="form1">
+     song: <input type="text"/>
+     link: <input type="text"/>
+     <input type="button" value="add"/>
+     </form>
+    </body></html>
