@@ -1,0 +1,11 @@
+<!--Question: Is the following XML document well-formed?-->
+<!--My Answer: Yes-->
+
+<?xml version="1.0" ?>
+<bookList>
+<book>
+<title>XML in a Nutshell</title>
+<title>The Design of Everyday Things</title>
+<author></author>
+</book>
+</bookList>
