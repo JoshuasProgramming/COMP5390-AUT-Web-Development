@@ -1,0 +1,18 @@
+<!--Add a DTD specification in the booklist XML document in Task 1 with the following
+constraints on each book:
+    • exactly one title;
+    • at least one author;
+    • at most one rating tag.
+Is the document a valid XLM document? Explain why.
+Check your answer with an XML validator.
+-->
+
+<?xml version="1.0" ?>
+<!DOCTYPE bookList SYSTEM "task2.dtd">
+<bookList>
+<book>
+<title>XML in a Nutshell</title>
+<title>The Design of Everyday Things</title>
+<author></author>
+</book>
+</bookList>

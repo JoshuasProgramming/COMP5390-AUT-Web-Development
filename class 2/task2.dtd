@@ -1,0 +1,9 @@
+<!DOCTYPE bookList
+[
+<!ELEMENT bookList (book,title,author,rating?)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT rating (#PCDATA)>
+]>
+
