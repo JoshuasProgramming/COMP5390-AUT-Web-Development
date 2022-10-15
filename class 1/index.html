@@ -28,7 +28,17 @@
         //Task 2 Begins
 
         $('#b1').on('click', function() {
-            $('#summerNights').append('<li id="newList"' + idCounter + '>' + "Did you get very far" + '</li>')
+            $('#summerNights').append('<li>' + "Did you get very far" + '</li>');
+
+            //Task 6 Begins
+            $('#summerNights > li').siblings().on('mouseover', function() {
+                $(this).css('background-color','yellow');
+            });
+
+            $('#summerNights > li').siblings().on('mouseout', function() {
+                $(this).css('background-color','white');
+            });
+            //Task 6 Ends
         });
 
         //Task 2 Ends
@@ -40,8 +50,7 @@
         })
 
         $('li').on('mouseout', function() {
-            $(this).css('background-color','white')
-            // hoverOff()
+            $(this).css('background-color','white');
         })
 
         //Task 3 Ends
@@ -50,7 +59,18 @@
         //Task 4 Begins
 
         $('#b2').on('click', function() {
-            $('#summerNights').last().append("<li id='NewList" + idCounter > + "Like does he have a car" + "</li>");
+            $('#summerNights').last().append('<li> ' + "Like does he have a car" + '</li>');
+
+            //Task 6 Begins
+            $('#summerNights > li').siblings().on('mouseover', function() {
+                $(this).css('background-color','yellow');
+            });
+
+            $('#summerNights > li').siblings().on('mouseout', function() {
+                $(this).css('background-color','white');
+            });
+            //Task 6 Ends
+
         });
 
         //Task 4 Ends
@@ -67,20 +87,6 @@
         });
 
         //Task 5 Ends
-
-        //Task 6 Begins
-
-        $('.newList').on('mouseover', function() {
-            // $(this).css('background-color','yellow');
-            alert("on");
-        })
-
-        $('.newList').on('mouseout', function() {
-            // $(this).css('background-color','white');
-            alert("off");
-        })
-
-        //Task 6 Ends
 
      });
     </script>
