@@ -1,0 +1,37 @@
+<!--
+    Define a valid XML document that complies with the XML schema as given below
+
+    <?xml version="1.0">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="itemList">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:elem<!-nt name="item" maxOccurs="unbounded">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="quantity" type="xs:positiveInteger"/>
+    <xs:element name="price">
+    <xs:simpleType>
+    <xs:restriction base="xs:decimal">
+    <xs:minExclusive value="0.0"/>
+    </xs:restriction>
+    </xs:simpleType>
+    </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+    </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+    </xs:element>
+    </xs:schema>
+-->
+
+<?xml version="1.0" ?>
+<itemList>
+<item>
+<title>Oranges</title>
+<quantity>12</quantity>
+<price>0.89</price>
+</item>
+</itemList>
