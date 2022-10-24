@@ -3,14 +3,27 @@
     padding: 0;
 }
 
-.select-container{
+.main-container{
+    display: flex;
+    align-items: normal;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-container > .select-container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    padding-top: 1%;
 }
 
-.select-container > h1{
+.main-container > .select-container > h1{
     font-size: 16px;
     margin-right: 1%;
+}
+
+.main-container > .input-container{
+    margin: auto;
+    padding-top: 2.5%;
 }
