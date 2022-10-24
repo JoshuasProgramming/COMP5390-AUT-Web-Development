@@ -18,31 +18,64 @@
 
 <script>
 
-    // let countryDrop = $('#country_select_dropdown');
+    $(document).ready(function(
+    ){
+        
+        //created variable to store the countryData url
+        const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
 
-    // countryDrop.empty();
-    // $('#country_select_dropdown').append('<option selected="true" disabled>Choose State/Province</option>');
-    // countryDrop.prop('selectedIndex', 0);
-    const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
+        //console logging the country data
+        $.getJSON(url, function(result){
+            console.log(result);
+        });
 
-    $.getJSON(url, function(result){
-        console.log(result);
+        /**
+         * 1.Fetch the url of the country data
+         * 2.Send a response in json
+         * 3.output the json in the console
+         */
+        $.getJSON(url, function(result){
+
+        //loop through each region within country data
+        $.each(result, function(key,entry){
+            let country = entry;
+            $('#country_select_dropdown').append($('<option>').val(country).text(country));
+            console.log(country);
+        })
+
+
+        // console.log("currently on:" + $('#country_select_dropdown').val());
+        // let extra = $('#country_select_dropdown').val();
+
+        // let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + extra;
+
+        // console.log(regionUrl)
+        // $.getJSON(regionUrl, function(res){
+        //     $.each(res, function(k,e){
+        //         console.log(e)
+        //     })
+        // })
+
+        // });
+
+        $('#country_select_dropdown').change(function() {
+
+            alert($('#country_select_dropdown').val());
+            let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
+
+            console.log(regionUrl);
+            $.getJSON(regionUrl, function(res){
+            $.each(res, function(k,e){
+                console.log(e.capital);
+                // $("#p").text(e.capital).val();
+                $("body").append($('<p>' + (e.capital) + '</p>'));
+            })
+        })
+
+        });
+
+        });
     });
-
-    /**
-     * 1.Fetch the url of the country data
-     * 2.Send a response in json
-     * 3.output the json in the console
-     */
-
-    $.getJSON(url, function(result){
-       $.each(result, function(key, entry){
-        let country = entry;
-        $('#country_select_dropdown').append($('<option>').val(country).text(country));
-        console.log(country);
-       })
-    });
-
 </script>
 
 <body>
