@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--import jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!--link to css-->
+    <link rel="stylesheet" href="style.css">
+
+    <!--Title for the page-->
+    <title>Assignment 1</title>
+
+</head>
+
+<script>
+
+    // let countryDrop = $('#country_select_dropdown');
+
+    // countryDrop.empty();
+    // $('#country_select_dropdown').append('<option selected="true" disabled>Choose State/Province</option>');
+    // countryDrop.prop('selectedIndex', 0);
+    const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
+
+    $.getJSON(url, function(result){
+        console.log(result);
+    });
+
+    /**
+     * 1.Fetch the url of the country data
+     * 2.Send a response in json
+     * 3.output the json in the console
+     */
+
+    $.getJSON(url, function(result){
+       $.each(result, function(key, entry){
+        let country = entry;
+        $('#country_select_dropdown').append($('<option>').val(country).text(country));
+        console.log(country);
+       })
+    });
+
+</script>
+
+<body>
+
+    <div class="select-container">
+        <h1>Select a region: </h1>
+        <!--dropdown select element-->
+        <select name="countrySelect" id="country_select_dropdown">
+        </select>
+    </div>
+</body>
+</html>
