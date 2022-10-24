@@ -30,16 +30,12 @@
         //created variable to store the countryData url
         const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
 
-        //console logging the country data
-        $.getJSON(url, function(result){
-            console.log(result);
-        });
-
         /**
          * 1.Fetch the url of the country data
          * 2.Send a response in json
          * 3.output the json in the console
          */
+
         $.getJSON(url, function(result){
 
         //loop through each region within country data
@@ -52,14 +48,9 @@
         $('#country_select_dropdown').change(function() {
 
             $('#data_table').css("display", "inline");
-
-            // alert($('#country_select_dropdown').val());
+            
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
-
-            // $('#dataTable').append("<thead> <tr>" + "<th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>" + "</tr></thead>");
-            // $('#tr').append("<th> <th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>");
-            console.log(regionUrl);
             $.getJSON(regionUrl, function(res){
             $.each(res, function(k,e){
                 console.log(e.capital);
@@ -72,17 +63,12 @@
                 regionCount = regionCount + e.info.population;
                 regionAmount = regionAmount + 1;
                 languageArray.push(e.info.language);
-                
-                // $('#td').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'>" +"</td>"+"<td>"+e.name+"</td>"+"<td>"+e.capital+"</td>"+"<td>"+e.info.population+"</td>"+"<td>"+e.info.language+"</td>" + "</tr>");
-
             })
-            console.log("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
 
             $('#average').append("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
-
-
             $('#most_popular_language').append("<br>" + mostOccur(languageArray));
 
+            //function to find the most popular language of each region
             function mostOccur(languageArray){
                 let m = 0;
                 let mf = 1;
@@ -100,13 +86,11 @@
                     m=0;
                 }
                 return ("most popular language by " + mf + ": " + item);
-                // return item;
             }
-
-            console.log(languageArray)
 
             regionAmount = 0;
             regionCount = 0;
+            languageArray = [];
         })
 
         });
@@ -155,6 +139,7 @@
                 <td id="td4"></td>
             </tbody>
         </table>
+        
     </div>
 
 </body>
