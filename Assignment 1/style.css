@@ -27,3 +27,26 @@
     margin: auto;
     padding-top: 2.5%;
 }
+
+.main-container > .dataTable{
+    width: auto;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    color: #000000;
+    margin: 2% auto auto auto;
+}
+
+table.dataTable td, table.dataTable th {
+  border-width: 2px;
+  border-color: #000000;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.dataTable thead {
+    background-color: #2b7bfd;
+}
+

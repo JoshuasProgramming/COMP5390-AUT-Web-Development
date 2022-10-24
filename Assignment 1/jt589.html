@@ -20,6 +20,8 @@
 
     $(document).ready(function(
     ){
+      
+        $('#data_table').css("display", "none");
         
         //created variable to store the countryData url
         const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
@@ -60,7 +62,9 @@
 
         $('#country_select_dropdown').change(function() {
 
-            alert($('#country_select_dropdown').val());
+            $('#data_table').css("display", "inline");
+
+            // alert($('#country_select_dropdown').val());
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
             console.log(regionUrl);
@@ -68,7 +72,10 @@
             $.each(res, function(k,e){
                 console.log(e.capital);
                 // $("#p").text(e.capital).val();
-                $("body").append($('<p>' + (e.capital) + '</p>'));
+                // $("body").append($('<p>' + (e.capital) + '</p>'));
+                $("<img src='" + e.flag + ">").appendTo("#data_table > tbody ");
+                $("<tr><td>" + e.capital + "</tr></td>").appendTo("#data_table > tbody ");
+                // $('#data_table > tbody > tr').append('<td>'+ e.capital+ '</td>');
             })
         })
 
@@ -90,8 +97,26 @@
 
         <div class="input-container">
             <input type="text">
-            <button id="input-btn">Search</button>
+            <button id="input_btn">Search</button>
         </div>
+        <table id="data_table" class="dataTable">
+        <thead>
+            <tr>
+            <th>Flag</th>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Population</th>
+            <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> -->
+        </tbody>
+        </table>
     </div>
 
 </body>
