@@ -28,6 +28,20 @@
     padding-top: 2.5%;
 }
 
+.displayInfo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 1%;
+}
+
+.displayInfo-container > p {
+    font-size: 15px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+
 .main-container > .dataTable{
     width: auto;
     background-color: #fcfcfc;
@@ -74,3 +88,4 @@ table.dataTable th{
     font-size: 25px;
     font-weight: bolder
 }
+

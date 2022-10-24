@@ -20,6 +20,10 @@
 
     $(document).ready(function(
     ){
+
+        let regionCount = 0;
+        let regionAmount = 0;
+        let languageArray = [];
       
         $('#data_table').css("display", "none");
         
@@ -52,6 +56,7 @@
             // alert($('#country_select_dropdown').val());
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
+
             // $('#dataTable').append("<thead> <tr>" + "<th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>" + "</tr></thead>");
             // $('#tr').append("<th> <th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>");
             console.log(regionUrl);
@@ -63,13 +68,45 @@
                 $('#td2').append("<tr>" + "<td>"+ e.capital+ "</tr>");
                 $('#td3').append("<tr>" + "<td>"+ e.info.population+ "</tr>");
                 $('#td4').append("<tr>" + "<td>"+ e.info.language+ "</tr>");
+
+                regionCount = regionCount + e.info.population;
+                regionAmount = regionAmount + 1;
+                languageArray.push(e.info.language);
                 
                 // $('#td').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'>" +"</td>"+"<td>"+e.name+"</td>"+"<td>"+e.capital+"</td>"+"<td>"+e.info.population+"</td>"+"<td>"+e.info.language+"</td>" + "</tr>");
 
             })
+            console.log("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
 
-            // $('#data_table').
+            $('#average').append("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
 
+
+            $('#most_popular_language').append("<br>" + mostOccur(languageArray));
+
+            function mostOccur(languageArray){
+                let m = 0;
+                let mf = 1;
+                let item;
+                for(let i = 0; i < languageArray.length; i++){
+                    for(let j = i; j < languageArray.length; j++){
+                        if(languageArray[i] == languageArray[j]){
+                            m++;
+                        }
+                        if(mf<m){
+                            mf=m;
+                            item = languageArray[i];
+                        }
+                    }
+                    m=0;
+                }
+                return ("most popular language by " + mf + ": " + item);
+                // return item;
+            }
+
+            console.log(languageArray)
+
+            regionAmount = 0;
+            regionCount = 0;
         })
 
         });
@@ -86,6 +123,7 @@
             <h1>Select a region: </h1>
             <!--dropdown select element-->
             <select name="countrySelect" id="country_select_dropdown">
+                <option value="selectRegion">-Select Region-</option>
             </select>
         </div>
 
@@ -93,6 +131,12 @@
             <input type="text">
             <button id="input_btn">Search</button>
         </div>
+
+        <div class="displayInfo-container">
+            <p id="average"></p>
+            <p id="most_popular_language"></p>
+        </div>
+
         <table id="data_table" class="dataTable">
             <thead>
                 <tr>
