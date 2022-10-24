@@ -1,8 +1,10 @@
+/** Global Styling */
 *{
     margin: 0;
     padding: 0;
 }
 
+/* Main container styling*/
 .main-container{
     display: flex;
     align-items: normal;
@@ -10,6 +12,7 @@
     flex-direction: column;
 }
 
+/* select-container styling*/
 .main-container > .select-container{
     display: flex;
     align-items: center;
@@ -23,11 +26,14 @@
     margin-right: 1%;
 }
 
+/* input-container styling */
 .main-container > .input-container{
     margin: auto;
     padding-top: 2.5%;
 }
 
+
+/* displayInfo styling */
 .displayInfo-container{
     display: flex;
     align-items: center;
@@ -42,6 +48,7 @@
     font-weight: 500;
 }
 
+/*Data Table class / Table styling*/
 .main-container > .dataTable{
     width: auto;
     background-color: #fcfcfc;
@@ -68,7 +75,8 @@ tr:nth-child(even){
     background-color: aliceblue;
 }
 
-.countryImage{
+
+.countryImage{ /* image within table styling */
     width: 200px;
     height: 200px;
 }
