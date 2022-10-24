@@ -45,21 +45,6 @@
             console.log(country);
         })
 
-
-        // console.log("currently on:" + $('#country_select_dropdown').val());
-        // let extra = $('#country_select_dropdown').val();
-
-        // let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + extra;
-
-        // console.log(regionUrl)
-        // $.getJSON(regionUrl, function(res){
-        //     $.each(res, function(k,e){
-        //         console.log(e)
-        //     })
-        // })
-
-        // });
-
         $('#country_select_dropdown').change(function() {
 
             $('#data_table').css("display", "inline");
@@ -67,22 +52,31 @@
             // alert($('#country_select_dropdown').val());
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
+            // $('#dataTable').append("<thead> <tr>" + "<th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>" + "</tr></thead>");
+            // $('#tr').append("<th> <th>Flag</th>" + "<th>Name</th>" + "<th>Capital</th>" + "<th>Population</th>" + "<th>Language</th>");
             console.log(regionUrl);
             $.getJSON(regionUrl, function(res){
             $.each(res, function(k,e){
                 console.log(e.capital);
-                // $("#p").text(e.capital).val();
-                // $("body").append($('<p>' + (e.capital) + '</p>'));
-                $("<img src='" + e.flag + ">").appendTo("#data_table > tbody ");
-                $("<tr><td>" + e.capital + "</tr></td>").appendTo("#data_table > tbody ");
-                // $('#data_table > tbody > tr').append('<td>'+ e.capital+ '</td>');
+                $('#td0').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'</tr>");
+                $('#td1').append("<tr>" + "<td>"+e.name+ "</tr>");
+                $('#td2').append("<tr>" + "<td>"+ e.capital+ "</tr>");
+                $('#td3').append("<tr>" + "<td>"+ e.info.population+ "</tr>");
+                $('#td4').append("<tr>" + "<td>"+ e.info.language+ "</tr>");
+                
+                // $('#td').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'>" +"</td>"+"<td>"+e.name+"</td>"+"<td>"+e.capital+"</td>"+"<td>"+e.info.population+"</td>"+"<td>"+e.info.language+"</td>" + "</tr>");
+
             })
+
+            // $('#data_table').
+
         })
 
         });
 
         });
     });
+
 </script>
 
 <body>
@@ -100,22 +94,22 @@
             <button id="input_btn">Search</button>
         </div>
         <table id="data_table" class="dataTable">
-        <thead>
-            <tr>
-            <th>Flag</th>
-            <th>Name</th>
-            <th>Capital</th>
-            <th>Population</th>
-            <th>Language</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> -->
-        </tbody>
+            <thead>
+                <tr>
+                    <th>Flag</th>
+                    <th>Name</th>
+                    <th>capital</th>
+                    <th>population</th>
+                    <th>language</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td id="td0"></td>
+                <td id="td1"></td>
+                <td id="td2"></td>
+                <td id="td3"></td>
+                <td id="td4"></td>
+            </tbody>
         </table>
     </div>
 

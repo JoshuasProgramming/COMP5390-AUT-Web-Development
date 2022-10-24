@@ -30,7 +30,7 @@
 
 .main-container > .dataTable{
     width: auto;
-    background-color: #ffffff;
+    background-color: #fcfcfc;
     border-collapse: collapse;
     border-width: 2px;
     border-color: #000000;
@@ -40,13 +40,37 @@
 }
 
 table.dataTable td, table.dataTable th {
-  border-width: 2px;
-  border-color: #000000;
-  border-style: solid;
-  padding: 3px;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    text-align: center;
 }
 
 table.dataTable thead {
-    background-color: #2b7bfd;
+    background-color: rgb(194, 226, 254);
 }
 
+tr:nth-child(even){
+    background-color: aliceblue;
+}
+
+.countryImage{
+    width: 200px;
+    height: 200px;
+}
+
+table.dataTable td{
+    height: 300px;
+    width: 16%;
+    font-size: 23px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+
+table.dataTable th{
+    height: 119px;
+    font-size: 25px;
+    font-family: system-ui;
+    font-size: 25px;
+    font-weight: bolder
+}
