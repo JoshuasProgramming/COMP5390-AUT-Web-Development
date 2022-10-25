@@ -98,3 +98,8 @@ table.dataTable th{
 }
 
 
+/* Selected highlight color */
+.selected{
+    background-color:#FFFF00;
+    transition:1.5s;
+}
