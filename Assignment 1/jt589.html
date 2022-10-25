@@ -26,6 +26,7 @@
         let languageArray = [];
       
         $('#data_table').css("display", "none");
+        $('#reset_btn').css("display", "none");
         
         //created variable to store the countryData url
         const url = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?regions';
@@ -48,6 +49,7 @@
         $('#country_select_dropdown').change(function() {
 
             $('#data_table').css("display", "inline");
+            $('#reset_btn').css("display", "inline");
             
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
@@ -91,6 +93,19 @@
             regionAmount = 0;
             regionCount = 0;
             languageArray = [];
+
+
+            //Reset function
+            $('#reset_btn').click(function(){
+                $('#average').empty();
+                $('#most_popular_language').empty();
+                $('#td0').empty();
+                $('#td1').empty();
+                $('#td2').empty();
+                $('#td3').empty();
+                $('#td4').empty();
+                $('#data_table').css("display", "none");
+            });
         })
 
         });
@@ -116,6 +131,7 @@
         <div class="input-container">
             <input type="text">
             <button id="input_btn">Search</button>
+            <button id="reset_btn">Reset</button>
         </div>
 
         <!--container that contains two p elements for task 2(b)-->

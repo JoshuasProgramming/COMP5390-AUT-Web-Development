@@ -43,9 +43,9 @@
 }
 
 .displayInfo-container > p {
-    font-size: 15px;
-    font-family: system-ui;
-    font-weight: 500;
+    font-size: 22px;
+    font-family: sans-serif;
+    font-weight: bolder;
 }
 
 /*Data Table class / Table styling*/
