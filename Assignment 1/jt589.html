@@ -20,7 +20,7 @@
 
     $(document).ready(function(
     ){
-
+        
         //created variables and variable to store the countryData url
         /*
         * url => used to store the countryData url, which we'll be getting JSON data from
@@ -38,26 +38,31 @@
         $('#data_table').css("display", "none");
         $('#reset_btn').css("display", "none");
         
-        
         /**
-         * 1.Fetch the url of the country data
-         * 2.Send a response in json
-         * 3.output the json in the console
-         */
+        * Fetch the data from the url above and assign it to a variable called 'result'
+        * loop through each entry in the (JSON) data
+        * append each country from (JSON) data to the select element, as an option element
+        */
         $.getJSON(url, function(result){
-
-        //loop through each region within country data
-        $.each(result, function(key,entry){
-            let country = entry;
-            $('#country_select_dropdown').append($('<option>').val(country).text(country));
-            console.log(country);
+            $.each(result, function(key,entry){
+                let country = entry;
+                $('#country_select_dropdown').append($('<option>').val(country).text(country));
+                console.log(country);
         })
+        
+
+        /**
+        * 
+        *
+        */
 
         $('#country_select_dropdown').change(function() {
 
+            //after the user selects a region, we'll set the table and reset button the 'display:inline'
             $('#data_table').css("display", "inline");
             $('#reset_btn').css("display", "inline");
             
+            //regionUrl => used to store the countryData url 
             let regionUrl = 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A1/countryData.php?region=' + $('#country_select_dropdown').val();
 
             $.getJSON(regionUrl, function(res){
@@ -73,7 +78,7 @@
                 regionAmount = regionAmount + 1;
                 languageArray.push(e.info.language);
             })
-
+            
             $('#average').append("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
             $('#most_popular_language').append("<br>" + mostOccur(languageArray));
 
@@ -96,7 +101,7 @@
                 }
                 return ("most popular language by " + mf + ": " + item);
             }
-
+            
             //task 2(c) 
             $('#input_btn').click(function(){
                 let toFind = ($('#input_info').val());
@@ -110,12 +115,11 @@
                 }
 
             });
-
+            
             //resetting variables relating to the most popular language and region counter
             regionAmount = 0;
             regionCount = 0;
             languageArray = [];
-
 
             //Reset function
             $('#reset_btn').click(function(){
