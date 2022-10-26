@@ -52,8 +52,18 @@
         
 
         /**
-        * 
-        *
+        * Once the select element is pressed a few processes will happen
+        * The (data) table and reset btn will appear on the page
+        * a new url variable named 'regionURL' will be created...
+        * regionUrl => used to store extra data from the countryData url, which we'll be getting JSON data from
+        * loop through the 'regionUrl' and append to the table as so...
+        * append: a) the name of the country (from specific region)
+        *         b) the capital of the country (from specific region)
+        *         c) the population of the country (from specific region)
+        *         d) the language of the country (from specific region)
+        * get the average population of each region
+        * get the most popular language of each region (using the 'mostOccur' function)
+        * create a reset btn for resetting the page after we've selected a region
         */
 
         $('#country_select_dropdown').change(function() {
