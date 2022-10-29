@@ -91,6 +91,7 @@
             
             $('#average').append("average population (2 d.p): " + (regionCount/regionAmount).toFixed(2));
             $('#most_popular_language').append("<br>" + mostOccur(languageArray));
+            $('#number_of_countries').append("<br> Total number of counties: " + regionAmount);
 
             //function to find the most popular language of each region
             function mostOccur(languageArray){
@@ -109,7 +110,7 @@
                     }
                     m=0;
                 }
-                return ("most popular language by " + mf + ": " + item);
+                return ("most popular language by " + mf + ": " + item);  
             }
             
             //task 2(c) 
@@ -118,9 +119,9 @@
                 // alert(toFind);
                 
                 if(($("#td1:contains(toFind)")) || ($("#td2:contains(toFind)")) || ($("#td4:contains(toFind)"))){
-                    // $('#td1').replaceAll("<span class='selected' id='highlight'>" + $('#td1') + "</span>");  
-                    // $('#td2').replaceAll("<span class='selected' id='highlight'>" + $('#td2') + "</span>"); 
-                    // $('#td4').replaceAll("<span class='selected' id='highlight'>" + $('#td4') + "</span>"); 
+                    $('#td1').replaceAll("<span class='selected' id='highlight'>" + $('#td1') + "</span>");  
+                    $('#td2').replaceAll("<span class='selected' id='highlight'>" + $('#td2') + "</span>"); 
+                    $('#td4').replaceAll("<span class='selected' id='highlight'>" + $('#td4') + "</span>"); 
                     console.log($("#td1:contains(toFind)"));
                 }
 
@@ -176,6 +177,7 @@
         <div class="displayInfo-container">
             <p id="average"></p>
             <p id="most_popular_language"></p>
+            <p id="number_of_countries"></p>
         </div>
 
         <!--html table element which contains data about a specific region-->
