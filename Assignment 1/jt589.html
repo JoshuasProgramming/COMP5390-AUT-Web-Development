@@ -77,7 +77,7 @@
 
             $.getJSON(regionUrl, function(res){
             $.each(res, function(k,e){
-                console.log(e.capital);
+                console.log(e.capital); 
                 $('#td0').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'</tr>");
                 $('#td1').append("<tr>" + "<td>"+e.name+ "</tr>");
                 $('#td2').append("<tr>" + "<td>"+ e.capital+ "</tr>");

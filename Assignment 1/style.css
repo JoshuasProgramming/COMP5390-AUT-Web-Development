@@ -69,6 +69,11 @@ table.dataTable td, table.dataTable th {
 
 table.dataTable thead {
     background-color: rgb(194, 226, 254);
+    width: 50%;
+}
+
+table.dataTable tr{
+    width: 50%;
 }
 
 tr:nth-child(even){
@@ -102,4 +107,17 @@ table.dataTable th{
 .selected{
     background-color:#FFFF00;
     transition:1.5s;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .displayInfo-container{
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+
+    .displayInfo-container > p{
+        text-align: center;
+        font-size: 15px;
+    }
 }
