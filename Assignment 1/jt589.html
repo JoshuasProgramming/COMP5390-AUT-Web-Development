@@ -8,11 +8,135 @@
     <!--import jquery-->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
-    <!--link to css-->
-    <link rel="stylesheet" href="style.css">
-
     <!--Title for the page-->
     <title>Assignment 1</title>
+
+
+    <style>
+        /** Global Styling */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container styling*/
+        .main-container{
+            display: flex;
+            align-items: normal;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* select-container styling*/
+        .main-container > .select-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            padding-top: 1%;
+        }
+
+        .main-container > .select-container > h1{
+            font-size: 16px;
+            margin-right: 1%;
+        }
+
+        /* input-container styling */
+        .main-container > .input-container{
+            margin: auto;
+            padding-top: 2.5%;
+        }
+
+
+        /* displayInfo styling */
+        .displayInfo-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 1%;
+        }
+
+        .displayInfo-container > p {
+            font-size: 22px;
+            font-family: sans-serif;
+            font-weight: bolder;
+        }
+
+        /*Data Table class / Table styling*/
+        .main-container > .dataTable{
+            width: auto;
+            background-color: #fcfcfc;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #000000;
+            border-style: solid;
+            color: #000000;
+            margin: 2% auto auto auto;
+        }
+
+        table.dataTable td, table.dataTable th {
+            border-width: 1px;
+            border-color: #000000;
+            border-style: solid;
+            text-align: center;
+        }
+
+        table.dataTable thead {
+            background-color: rgb(194, 226, 254);
+            width: 50%;
+        }
+
+        table.dataTable tr{
+            width: 50%;
+        }
+
+        tr:nth-child(even){
+            background-color: aliceblue;
+        }
+
+
+        .countryImage{ /* image within table styling */
+            width: 125px;
+            height: 125px;
+        }
+
+        table.dataTable td{
+            height: 300px;
+            width: 16%;
+            font-size: 23px;
+            font-family: system-ui;
+            font-weight: 500;
+        }
+
+        table.dataTable th{
+            height: 119px;
+            font-size: 25px;
+            font-family: system-ui;
+            font-size: 25px;
+            font-weight: bolder
+        }
+
+
+        /* Selected highlight color */
+        .selected{
+            background-color:#FFFF00;
+            transition:1.5s;
+        }
+
+        @media screen and (max-width: 1200px) {
+
+            .displayInfo-container{
+                margin-top: 3%;
+                margin-bottom: 3%;
+            }
+
+            .displayInfo-container > p{
+                text-align: center;
+                font-size: 15px;
+            }
+        }
+    </style>
 
 </head>
 
@@ -20,6 +144,22 @@
 
     $(document).ready(function(
     ){
+
+
+        //rest function will remove everything from the page in the form of a reset
+        //This is done by either using the empty method on 'table data' and 'text' ids OR setting the data table itself to 'display:none' 
+        function reset(){
+            $('#average').empty();
+            $('#most_popular_language').empty();
+            $('#number_of_countries').empty();
+            $('#td0').empty();
+            $('#td1').empty();
+            $('#td2').empty();
+            $('#td3').empty();
+            $('#td4').empty();
+            $('#data_table').css("display", "none");
+        }
+
         
         //created variables and variable to store the countryData url
         /*
@@ -47,7 +187,6 @@
             $.each(result, function(key,entry){
                 let country = entry;
                 $('#country_select_dropdown').append($('<option>').val(country).text(country));
-                console.log(country);
         })
         
 
@@ -68,6 +207,9 @@
 
         $('#country_select_dropdown').change(function() {
 
+            //calls upon the 'reset' method. Method will empty previous table and text when the user selects another region
+            reset()
+
             //after the user selects a region, we'll set the table and reset button the 'display:inline'
             $('#data_table').css("display", "inline");
             $('#reset_btn').css("display", "inline");
@@ -77,7 +219,6 @@
 
             $.getJSON(regionUrl, function(res){
             $.each(res, function(k,e){
-                console.log(e.capital); 
                 $('#td0').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e.flag+"'</tr>");
                 $('#td1').append("<tr>" + "<td>"+e.name+ "</tr>");
                 $('#td2').append("<tr>" + "<td>"+ e.capital+ "</tr>");
@@ -98,6 +239,7 @@
                 let m = 0;
                 let mf = 1;
                 let item;
+
                 for(let i = 0; i < languageArray.length; i++){
                     for(let j = i; j < languageArray.length; j++){
                         if(languageArray[i] == languageArray[j]){
@@ -110,20 +252,55 @@
                     }
                     m=0;
                 }
+                //return the most popular language
+                //item => the language
+                //mf => the amount of which that language is seen by
+
+                //e.g: "most popular language by [(mf) 30]: [(item) England]"
                 return ("most popular language by " + mf + ": " + item);  
             }
             
             //task 2(c) 
             $('#input_btn').click(function(){
                 let toFind = ($('#input_info').val());
-                // alert(toFind);
-                
-                if(($("#td1:contains(toFind)")) || ($("#td2:contains(toFind)")) || ($("#td4:contains(toFind)"))){
-                    $('#td1').replaceAll("<span class='selected' id='highlight'>" + $('#td1') + "</span>");  
-                    $('#td2').replaceAll("<span class='selected' id='highlight'>" + $('#td2') + "</span>"); 
-                    $('#td4').replaceAll("<span class='selected' id='highlight'>" + $('#td4') + "</span>"); 
-                    console.log($("#td1:contains(toFind)"));
-                }
+
+                //reset on load
+                reset();
+
+                //make the table appear
+                $('#data_table').css("display", "inline");
+                $('#reset_btn').css("display", "inline");
+
+
+                //loop through the data
+                $.each(res, function(k2,e2){
+
+                    //depending on what the user enters, we'll upload counties to the table if it contains letters from its 'name' or'capital' contain the search string, 'toFind' (regardless of the case)
+
+                    //find search letters that relate to the 'name'
+                    if(e2.name.toString().toLowerCase().includes(toFind)){
+
+                        $('#td0').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e2.flag+"'</tr>");
+                        $('#td1').append("<tr>" + "<td style='background-color:lightgreen'>"+e2.name+ "</tr>");
+                        $('#td2').append("<tr>" + "<td>"+ e2.capital+ "</tr>");
+                        $('#td3').append("<tr>" + "<td>"+ e2.info.population+ "</tr>");
+                        $('#td4').append("<tr>" + "<td>"+ e2.info.language+ "</tr>");
+
+                    }
+
+
+                    //find search letters that relate to the 'capital'
+                    if(e2.capital.toString().toLowerCase().includes(toFind)){
+
+                        $('#td0').append("<tr>" + "<td>"+ "<img class='countryImage' src='"+e2.flag+"'</tr>");
+                        $('#td1').append("<tr>" + "<td>"+e2.name+ "</tr>");
+                        $('#td2').append("<tr>" + "<td style='background-color:lightgreen'>"+ e2.capital+ "</tr>");
+                        $('#td3').append("<tr>" + "<td>"+ e2.info.population+ "</tr>");
+                        $('#td4').append("<tr>" + "<td>"+ e2.info.language+ "</tr>");
+
+                    }
+
+                })
 
             });
             
@@ -131,18 +308,6 @@
             regionAmount = 0;
             regionCount = 0;
             languageArray = [];
-
-            //Reset function
-            $('#reset_btn').click(function(){
-                $('#average').empty();
-                $('#most_popular_language').empty();
-                $('#td0').empty();
-                $('#td1').empty();
-                $('#td2').empty();
-                $('#td3').empty();
-                $('#td4').empty();
-                $('#data_table').css("display", "none");
-            });
 
         })
 
@@ -155,6 +320,8 @@
 </script>
 
 <body>
+
+    <!--Main container which 'contains' all the other container (select-container, input-container, displayInfo-container, etc...)-->
     <div class="main-container">
 
         <!--container that contains an h1 and select element -->
@@ -170,7 +337,6 @@
         <div class="input-container">
             <input type="text" id="input_info">
             <button id="input_btn">Search</button>
-            <button id="reset_btn">Reset</button>
         </div>
 
         <!--container that contains two p elements for task 2(b)-->
